@@ -1,54 +1,37 @@
 
 class Dice {
+    #resultat;
 
+    constructor() {
+        this.#resultat =0;
+    }
 
     roll() {
         let resultat = Math.floor(Math.random() * 6) + 1;
         document.getElementById("resultat").innerHTML = resultat;
     }
-    getValue(){
-        return value;
-    }
 
 }
 
 class DiceController {
-    /**
-     * Initialiserer Demo
-     * @param {String} rootElement - HTML container-elementet (DIV) med HTML button
-     *                 som aktiverer demonstrasjonene.
-     */
+
+    dice = new Dice();
+
     constructor (rootElement) {
-        this.rootElement = rootElement
+        this.rootElement = rootElement;
 
-        const dicebutton = rootElement.getElementById("*[data-dicebutton]");
+        const dicebutton = rootElement.querySelector("*[data-dicebutton]");
         dicebutton.addEventListener("click",this.#rollDice.bind(this));
-
-        diceoutputElement.innerText = Dice.getValue();
-
-        console.log(dice.getValue())
-
-        //rootElement.querySelector("span[data-diceoutput]").textContent = ;
     }
 
-
-
-    /**
-     * Metode som setter ny header
-     * @private
-     * @listens Button:click
-     */
     #rollDice() {
-        Dice.roll()
+        this.dice.roll()
     }
 
 }
 
-
-
-
 function init() {
-    const rootElement = new DiceController("root");
+    const rootElement = document.getElementById("root");
     new DiceController(rootElement);
 }
 
